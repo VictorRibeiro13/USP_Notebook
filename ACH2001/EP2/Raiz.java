@@ -35,7 +35,6 @@ public class Raiz {
     Double diferenca;
 
 		if(a < 0 || epsilon <= 0 || epsilon >= 1){
-      System.out.println("A raiz e a precisão devem ser maiores do que zero");
       return -1;
     }
 
@@ -74,9 +73,6 @@ public class Raiz {
 		Apenas para seus testes. ISSO SERÁ IGNORADO NA CORREÇÃO
 	*/
 	public static void main(String[] args) {
-		// escreva seu código (para testes) aqui
-
-		// Exemplo de teste:
 		double valor = 63;
 		double precisao = 0.001;
     System.out.println("Raiz de : "+valor+" = "+raizQuadrada(valor, precisao));

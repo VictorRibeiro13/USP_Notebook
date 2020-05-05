@@ -101,22 +101,35 @@ public class CaixaEletronico {
     */
     public static void main(String[] args) {
 
-        // Exemplos de teste:
-        System.out.println("0");
+        fazRetirada(1862);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+        fazRetirada(12);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+
+        fazRetirada(36);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+        fazRetirada(59);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+        fazRetirada(9);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+        fazRetirada(15);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
         fazRetirada(0);
-        System.out.println("Notas de 50: "+n50);
-        System.out.println("Notas de 10: "+n10);
-        System.out.println("Notas de 5:  "+n5);
-        System.out.println("Notas de 1:  "+n1);
-        System.out.println("================");
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
 
+        fazRetirada(-25);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
 
-        System.out.println("-500:");
-        fazRetirada(-500);
-        System.out.println("Notas de 50: "+n50);
-        System.out.println("Notas de 10: "+n10);
-        System.out.println("Notas de 5:  "+n5);
-        System.out.println("Notas de 1:  "+n1);
-        System.out.println("================");
+        fazRetirada(-10);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
+
+        fazRetirada(-3);
+        System.out.println("["+n50+", "+n10+", "+n5+", "+n1+"]");
     }
 }
