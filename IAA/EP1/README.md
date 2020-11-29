@@ -1,5 +1,7 @@
 # EP1 - ACH2002 - Introdução à Análise de Algoritmos
 
+> Victor Ribeiro - NºUSP 11917559 - Turma 94
+
 Para compilar e executar esse Exercício programa, basta executar no terminal, as respectivas operações:
 
 * 1 javac Main.java
