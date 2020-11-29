@@ -37,9 +37,11 @@ public class ImageEx extends Image {
 		if (distanceBetweenTwoPoints(px, py, qx, qy) < l) {
 			drawLine(px, py, qx, qy);
 		} else {
+			// Point A
 			int ax = linearCombination(px, qx, 1.0 / 3.0);
 			int ay = linearCombination(py, qy, 1.0 / 3.0);
 
+			// Point C
 			int cx = linearCombination(px, qx, 2.0 / 3.0);
 			int cy = linearCombination(py, qy, 2.0 / 3.0);
 
@@ -51,6 +53,7 @@ public class ImageEx extends Image {
 			int ux = (int) (-((qy - py)) * Math.sqrt(3) / 6.0);
 			int uy = (int) ((qx - px) * Math.sqrt(3) / 6.0);
 
+			// Point B
 			int bx = (int) (mx - ux);
 			int by = (int) (my - uy);
 
