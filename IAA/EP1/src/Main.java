@@ -16,18 +16,26 @@ public class Main {
 			String command = scanner.next();
 
 			if(command.equals("SET_COLOR")){
-
 				image.setColor(scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
 			}
 
 			if(command.equals("SET_PIXEL")){
-
 				image.setPixel(scanner.nextInt(), scanner.nextInt());
 			}
 
 			if(command.equals("DRAW_LINE")){
-
 				image.drawLine(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+			}
+
+			if (command.equals("REGION_FILL")) {
+				int x = scanner.nextInt();
+				int y = scanner.nextInt();
+
+				image.regionFill(x, y, image.getPixel(x, y));
+			}
+
+			if (command.equals("KOCH_CURVE")) {
+				image.kochCurve(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
 			}
 		}
 
@@ -35,10 +43,7 @@ public class Main {
 	}
 
 	public static void main(String [] args){
-
-
 		if(args.length != 2){
-	
 			System.out.println("Uso: java " + Main.class.getName() + " entrada.txt saida.png");
 			System.exit(1);
 		}

@@ -2,7 +2,7 @@
 
 public class ImageEx extends Image {
 
-	public ImageEx(int w, int h, int r, int g, int b){
+	public ImageEx(int w, int h, int r, int g, int b) {
 		super(w, h, r, g, b);
 	}
 
@@ -10,41 +10,65 @@ public class ImageEx extends Image {
 		super(w, h);
 	}
 
-	public double distanceBetweenTwoPoints(int px, int py, int qx, int qy) {
-		return Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2));
+	public int distanceBetweenTwoPoints(int px, int py, int qx, int qy) {
+		return (int) Math.round(Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2)));
 	}
 
-	public int[] linearCombination(int px, int py, int qx, int qy, double alpha) {
-		int[] xy = new int[2];
-
-
-
-
-		//return (int) ((1 - alpha) * (p + alpha) * q);
+	public int linearCombination(int p, int q, double alpha) {
+		if (alpha < 0 || alpha > 1.0) throw new Error("Alpha is not in 0 <= alpha <= 1");
+		return (int) Math.round(((1 - alpha) * p) + (alpha * q));
 	}
 
+	/**
+	 *
+	 * @param px x do primeiro ponto da reta
+	 * @param py y do primeiro ponto da reta
+	 * @param qx x do ultimo ponto da reta
+	 * @param qy y do ultimo ponto da reta
+	 * @param l limitante da curva
+	 *
+	 * 	Desenha na imagem a curva de Koch
+	 *
+	 * 	Para essa função, entedemos que os limites passados são validos,
+	 * 	conforme e-mail explicado pelo professor.
+	 *
+	 */
 	public void kochCurve(int px, int py, int qx, int qy, int l) {
-		// setting default color
-		this.setBgColor(0, 0, 0);
-		this.clear();
+		if (distanceBetweenTwoPoints(px, py, qx, qy) < l) {
+			drawLine(px, py, qx, qy);
+		} else {
+			int ax = linearCombination(px, qx, 1.0 / 3.0);
+			int ay = linearCombination(py, qy, 1.0 / 3.0);
 
-		// drawing initial line
-		if (c < l) this.drawLine(px, py, qx, qy);
+			int cx = linearCombination(px, qx, 2.0 / 3.0);
+			int cy = linearCombination(py, qy, 2.0 / 3.0);
 
-		int[] a = linearCombination(px, qx, 1/3);
-		int ay = linearCombination(py, qy, 1/3);
+			// m = medium point between P and Q
+			int mx = linearCombination(px, qx, 1.0 / 2.0);
+			int my = linearCombination(py, qy, 1.0 / 2.0);
 
-		int cx = linearCombination(px, qx, 2/3);
-		int cy = linearCombination(py, qy, 2/3);
+			// u = triangle height
+			int ux = (int) (-((qy - py)) * Math.sqrt(3) / 6.0);
+			int uy = (int) ((qx - px) * Math.sqrt(3) / 6.0);
 
-		int mx = linearCombination(px, qx, 1/2);
-		int my = linearCombination(py, qy, 1/2);
+			int bx = (int) (mx - ux);
+			int by = (int) (my - uy);
 
-
-
+			// call the other function recursively
+			kochCurve(cx, cy, qx, qy, l);
+			kochCurve(px, py, ax, ay, l);
+			kochCurve(bx, by, cx, cy, l);
+			kochCurve(ax, ay, bx, by, l);
+		}
 	}
 
-	public void regionFill(int x, int y, int reference_rgb){
-
+	public void regionFill(int x, int y, int reference_rgb) {
+		if (x >= 0 && y >= 0 && x < getWidth() && y < getHeight() && getPixel(x, y) == reference_rgb) {
+			setPixel(x, y);
+			regionFill(x+1, y, reference_rgb);
+			regionFill(x-1, y, reference_rgb);
+			regionFill(x, y+1, reference_rgb);
+			regionFill(x, y-1, reference_rgb);
+		}
 	}
 }
