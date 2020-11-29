@@ -1,4 +1,12 @@
-// Esqueleto da classe na qual devem ser implementadas as novas funcionalidades de desenho
+/*********************************************************************/
+/**   ACH2002 - Introdução à Análise de Algoritmos                  **/
+/**   EACH-USP - Segundo Semestre de 2020                           **/
+/**                                                                 **/
+/**   EP1                                                           **/
+/**                                                                 **/
+/**   Victor dos Santos Ribeiro                   11917559          **/
+/**                                                                 **/
+/*********************************************************************/
 
 public class ImageEx extends Image {
 

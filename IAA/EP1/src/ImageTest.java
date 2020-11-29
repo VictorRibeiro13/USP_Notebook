@@ -1,4 +1,12 @@
-// Exemplo de uso dos recursos da classe Image
+/*********************************************************************/
+/**   ACH2002 - Introdução à Análise de Algoritmos                  **/
+/**   EACH-USP - Segundo Semestre de 2020                           **/
+/**                                                                 **/
+/**   EP1                                                           **/
+/**                                                                 **/
+/**   Victor dos Santos Ribeiro                   11917559          **/
+/**                                                                 **/
+/*********************************************************************/
 
 public class ImageTest {
 

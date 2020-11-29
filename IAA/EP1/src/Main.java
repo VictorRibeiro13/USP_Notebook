@@ -1,7 +1,17 @@
+/*********************************************************************/
+/**   ACH2002 - Introdução à Análise de Algoritmos                  **/
+/**   EACH-USP - Segundo Semestre de 2020                           **/
+/**                                                                 **/
+/**   EP1                                                           **/
+/**                                                                 **/
+/**   Victor dos Santos Ribeiro                   11917559          **/
+/**                                                                 **/
+/*********************************************************************/
+
+
 import java.util.*;
 import java.io.*;
 
-// Esqueleto do programa principal
 
 public class Main {
 
