@@ -39,7 +39,6 @@ void exibirLog(PFILA f){
 
 int tamanho(PFILA f) {
   int size = 0;
-
   for (int i=0; i < f->maxElementos; i++) {
     if (f->heap[i] != NULL) size++;
   }
@@ -71,11 +70,7 @@ bool inserirElemento(PFILA f, int id, float prioridade) {
   int fatherIndex = (index-1) < 0 ? 0 : (int) floor((index-1)/2);
   f->heap[index] = newElement;
 
-
   while (f->heap[fatherIndex]->prioridade < newElement->prioridade) {
-    PONT atual = f->heap[index];
-    PONT pai = f->heap[fatherIndex];
-
     f->heap[index] = f->heap[fatherIndex];
     f->heap[fatherIndex] = newElement;
 
@@ -93,36 +88,91 @@ bool inserirElemento(PFILA f, int id, float prioridade) {
 
   return true;
 }
+  
+bool aumentarPrioridade(PFILA f, int id, float novaPrioridade) {
+  if (id < 0 || id > f->maxElementos || f->arranjo[id] == NULL) return false;
+  PONT element = f->arranjo[id];
+  if (element->prioridade >= novaPrioridade) return false;
 
-bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
-  bool res = false;
-  
-  /* COMPLETAR */
-  
-  return res;
+  element->prioridade = novaPrioridade;
+
+  int index = element->posicao;
+  int fatherIndex = (index-1) < 0 ? 0 : (int) floor((index-1)/2);
+
+  while (f->heap[fatherIndex]->prioridade < element->prioridade) {
+    f->heap[index] = f->heap[fatherIndex];
+    f->heap[fatherIndex] = element;
+
+    f->heap[index]->posicao = index;
+    f->heap[fatherIndex]->posicao = fatherIndex; 
+
+    index = fatherIndex;
+    fatherIndex = (int) floor((index-1)/2);
+  }
+
+  return true;
 }
 
 bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
-  bool res = false;
-  
-  /* COMPLETAR */
-  
-  return res;
+  // if (id < 0 || id > f->maxElementos || f->arranjo[id] == NULL) return false;
+  //   PONT element = f->arranjo[id];
+  //   if (element->prioridade <= novaPrioridade) return false;
+
+  //   element->prioridade = novaPrioridade;
+
+  //   int index = element->posicao;
+  //   int fatherIndex = (index-1) < 0 ? 0 : (int) floor((index-1)/2);
+
+  //   while (f->heap[fatherIndex]->prioridade < element->prioridade) {
+  //     f->heap[index] = f->heap[fatherIndex];
+  //     f->heap[fatherIndex] = element;
+
+  //     f->heap[index]->posicao = index;
+  //     f->heap[fatherIndex]->posicao = fatherIndex; 
+
+  //     index = fatherIndex;
+  //     fatherIndex = (int) floor((index-1)/2);
+  //   }
+
+  return true;
 }
 
-PONT removerElemento(PFILA f){
-  PONT res = NULL;
+PONT removerElemento(PFILA f) {
+  if (tamanho(f) == 0) return NULL;
+
+  int index = f->heap[0];
+
+  PONT actualElement = f->heap[1];
+
+  for (int i = 1; i < tamanho(f); i++) {
+    /* code */
+  }
   
-  /* COMPLETAR */
+
+  while (actualElement != NULL && actualElement->posicao != f->maxElementos-1) {
+
+    f->heap[index] = f->heap[fatherIndex];
+    f->heap[fatherIndex] = element;
+
+    f->heap[index]->posicao = index;
+    f->heap[fatherIndex]->posicao = fatherIndex; 
+
+    index = fatherIndex;
+    fatherIndex = (int) floor((index-1)/2);
+  }
+
+  return true;
+
+
+
   
-  return res;
+  return NULL;
 }
 
 bool consultarPrioridade(PFILA f, int id, float* resposta){
-  bool res = false;
   
-  /* COMPLETAR */
-  
-  return res;
+
+
+  return false;
 }
 

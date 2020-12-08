@@ -19,8 +19,6 @@ int main() {
   else printf("nok (5)\n");
   exibirLog(f);
 
-  return 0;
-
   if(aumentarPrioridade(f, 5, 10)) printf("ok\n");
   else printf("nok (6)\n");
   exibirLog(f);
@@ -36,9 +34,6 @@ int main() {
   if(aumentarPrioridade(f, 4, 4)) printf("ok\n");
   else printf("nok (10) - esperado, elemento com id=4 nao existe\n");
   exibirLog(f);
-  
-  printf("finalizado primeira bateria de testess");
-  return 0;
 
   PONT prioritario;
   prioritario = removerElemento(f);
@@ -69,6 +64,9 @@ int main() {
   if (prioritario) printf("Prioritario: %i, %f\n", prioritario->id, prioritario->prioridade);
   else printf("Fila vazia (7)\n");
   exibirLog(f);
+
+  printf("finalizado primeira bateria de testes\n");
+  return 0;
 
   if(inserirElemento(f, 1, 1)) printf("ok\n");
   else printf("nok (10)\n");
