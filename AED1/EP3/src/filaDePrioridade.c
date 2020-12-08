@@ -38,13 +38,18 @@ void exibirLog(PFILA f){
 }
 
 int tamanho(PFILA f) {
-  return 1;
+  int size = 0;
+
+  for (int i=0; i < f->maxElementos; i++) {
+    if (f->heap[i] != NULL) size++;
+  }
+
+  return size;
 }
 
 bool buscarElemento(PFILA f, int id) {
   return (id < 0 || id > f->maxElementos || f->arranjo[id] != NULL);
 }
-
 
 bool inserirElemento(PFILA f, int id, float prioridade) {
   if (buscarElemento(f, id)) return false;
@@ -74,9 +79,16 @@ bool inserirElemento(PFILA f, int id, float prioridade) {
     f->heap[index] = f->heap[fatherIndex];
     f->heap[fatherIndex] = newElement;
 
+    f->heap[index]->posicao = index;
+    f->heap[fatherIndex]->posicao = fatherIndex; 
+
     index = fatherIndex;
     fatherIndex = (int) floor((index-1)/2);
   }
+
+  f->heap[index]->posicao = index;
+  f->heap[fatherIndex]->posicao = fatherIndex;
+   
   f->elementosNoHeap = f->elementosNoHeap + 1;
 
   return true;
