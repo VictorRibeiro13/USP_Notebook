@@ -66,9 +66,6 @@ int main() {
   exibirLog(f);
 
   
-  printf("finalizado primeira bateria de testes\n");
-  return 0;
-
   if(inserirElemento(f, 1, 1)) printf("ok\n");
   else printf("nok (10)\n");
   exibirLog(f);
@@ -84,6 +81,9 @@ int main() {
   if(inserirElemento(f, 5, 5)) printf("ok\n");
   else printf("nok (14)\n");
   exibirLog(f);
+
+  printf("finalizado primeira bateria de testes\n");
+  return 0;
 
   printf("\n\nReduzindo prioridade\n");
 
