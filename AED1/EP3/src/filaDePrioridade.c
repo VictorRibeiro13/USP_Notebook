@@ -26,7 +26,7 @@ PFILA criarFila(int max) {
   return res;
 }
 
-void exibirLog(PFILA f){
+void exibirLog(PFILA f) {
   printf("Log [elementos: %i]\n", f->elementosNoHeap);
   PONT atual;
   int i;
@@ -83,7 +83,6 @@ bool inserirElemento(PFILA f, int id, float prioridade) {
 
   f->heap[index]->posicao = index;
   f->heap[fatherIndex]->posicao = fatherIndex;
-   
   f->elementosNoHeap = f->elementosNoHeap + 1;
 
   return true;
@@ -114,25 +113,25 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade) {
 }
 
 bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
-  if (id < 0 || id > f->maxElementos || f->arranjo[id] == NULL) return false;
-    PONT element = f->arranjo[id];
-    if (element->prioridade <= novaPrioridade) return false;
+  // if (id < 0 || id > f->maxElementos || f->arranjo[id] == NULL) return false;
+  //   PONT element = f->arranjo[id];
+  //   if (element->prioridade <= novaPrioridade) return false;
 
-    element->prioridade = novaPrioridade;
+  //   element->prioridade = novaPrioridade;
 
-    int index = element->posicao;
-    int fatherIndex = (index-1) < 0 ? 0 : (int) floor((index-1)/2);
+  //   int index = element->posicao;
+  //   int fatherIndex = (index-1) < 0 ? 0 : (int) floor((index-1)/2);
 
-    while (f->heap[fatherIndex]->prioridade < element->prioridade) {
-      f->heap[index] = f->heap[fatherIndex];
-      f->heap[fatherIndex] = element;
+  //   while (f->heap[fatherIndex]->prioridade < element->prioridade) {
+  //     f->heap[index] = f->heap[fatherIndex];
+  //     f->heap[fatherIndex] = element;
 
-      f->heap[index]->posicao = index;
-      f->heap[fatherIndex]->posicao = fatherIndex; 
+  //     f->heap[index]->posicao = index;
+  //     f->heap[fatherIndex]->posicao = fatherIndex; 
 
-      index = fatherIndex;
-      fatherIndex = (int) floor((index-1)/2);
-    }
+  //     index = fatherIndex;
+  //     fatherIndex = (int) floor((index-1)/2);
+  //   }
 
   return true;
 }
@@ -153,10 +152,9 @@ PONT removerElemento(PFILA f) {
   return elementRemoved;
 }
 
-bool consultarPrioridade(PFILA f, int id, float* resposta){
-  
-
-
-  return false;
+bool consultarPrioridade(PFILA f, int id, float* resposta) {
+  if (id < 0 || id > f->maxElementos || f->arranjo[id] == NULL) return false;
+  *resposta = f->arranjo[id]->prioridade;
+  return true;
 }
 
