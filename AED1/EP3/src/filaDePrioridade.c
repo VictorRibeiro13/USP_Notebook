@@ -118,7 +118,7 @@ void changeChildrenElementPosition(PFILA f, int index) {
   int leftChildren = (int) floor((2 * index) + 2);
   PONT actualElement = f->heap[index];
 
-  if (f->heap[rightChildren] != NULL && f->heap[rightChildren]->prioridade > actualElement->prioridade) { // pode dar errado, nesse caso colocar 2 ifs
+  if (f->heap[rightChildren] != NULL && f->heap[rightChildren]->prioridade > actualElement->prioridade) {
     f->heap[index] = f->heap[rightChildren];
     f->heap[rightChildren] = actualElement;
 
