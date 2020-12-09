@@ -65,6 +65,7 @@ int main() {
   else printf("Fila vazia (7)\n");
   exibirLog(f);
 
+  
   printf("finalizado primeira bateria de testes\n");
   return 0;
 
@@ -85,7 +86,6 @@ int main() {
   exibirLog(f);
 
   printf("\n\nReduzindo prioridade\n");
-
 
   if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
   else printf("nok (15)\n");
