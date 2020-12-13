@@ -116,24 +116,35 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade) {
 void changeChildrenElementPosition(PFILA f, int index) {
   int leftChildren = (int) floor((2 * index) + 1);
   int rightChildren = (int) floor((2 * index) + 2);
+  
   PONT actualElement = f->heap[index];
 
   if (f->heap[leftChildren] != NULL && f->heap[leftChildren]->prioridade > actualElement->prioridade) {
+    PONT nextElement = f->heap[leftChildren];
+
     f->heap[index] = f->heap[leftChildren];
     f->heap[leftChildren] = actualElement;
 
     f->heap[index]->posicao = index;
     f->heap[leftChildren]->posicao = leftChildren;
 
+    nextElement = f->heap[leftChildren];
+    actualElement = f->heap[index];
+
     changeChildrenElementPosition(f, leftChildren);
   }
 
   if (f->heap[rightChildren] != NULL && f->heap[rightChildren]->prioridade > actualElement->prioridade && index != 0) {
+    PONT nextElement = f->heap[rightChildren];
+
     f->heap[index] = f->heap[rightChildren];
     f->heap[rightChildren] = actualElement;
 
     f->heap[index]->posicao = index;
     f->heap[rightChildren]->posicao = rightChildren;
+
+    actualElement = f->heap[index];
+    nextElement = f->heap[rightChildren];
 
     changeChildrenElementPosition(f, rightChildren);
   }
