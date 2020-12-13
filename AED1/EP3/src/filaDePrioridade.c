@@ -114,21 +114,11 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade) {
 
 
 void changeChildrenElementPosition(PFILA f, int index) {
-  int rightChildren = (int) floor((2 * index) + 1);
-  int leftChildren = (int) floor((2 * index) + 2);
+  int leftChildren = (int) floor((2 * index) + 1);
+  int rightChildren = (int) floor((2 * index) + 2);
   PONT actualElement = f->heap[index];
 
-  if (f->heap[rightChildren] != NULL && f->heap[rightChildren]->prioridade > actualElement->prioridade) {
-    f->heap[index] = f->heap[rightChildren];
-    f->heap[rightChildren] = actualElement;
-
-    f->heap[index]->posicao = index;
-    f->heap[rightChildren]->posicao = rightChildren;
-
-    changeChildrenElementPosition(f, rightChildren);
-  }
-
-  if (f->heap[leftChildren] != NULL && f->heap[leftChildren]->prioridade > actualElement->prioridade && index != 0) {
+  if (f->heap[leftChildren] != NULL && f->heap[leftChildren]->prioridade > actualElement->prioridade) {
     f->heap[index] = f->heap[leftChildren];
     f->heap[leftChildren] = actualElement;
 
@@ -136,6 +126,16 @@ void changeChildrenElementPosition(PFILA f, int index) {
     f->heap[leftChildren]->posicao = leftChildren;
 
     changeChildrenElementPosition(f, leftChildren);
+  }
+
+  if (f->heap[rightChildren] != NULL && f->heap[rightChildren]->prioridade > actualElement->prioridade && index != 0) {
+    f->heap[index] = f->heap[rightChildren];
+    f->heap[rightChildren] = actualElement;
+
+    f->heap[index]->posicao = index;
+    f->heap[rightChildren]->posicao = rightChildren;
+
+    changeChildrenElementPosition(f, rightChildren);
   }
 } 
 
@@ -156,6 +156,7 @@ PONT removerElemento(PFILA f) {
   
   PONT elementRemoved = f->heap[0];
   f->heap[0] = f->heap[f->elementosNoHeap-1];
+  f->heap[0]->posicao = 0;
   f->heap[f->elementosNoHeap-1] = NULL;
 
   changeChildrenElementPosition(f, 0);

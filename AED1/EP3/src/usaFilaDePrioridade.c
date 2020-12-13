@@ -82,9 +82,6 @@ int main() {
   else printf("nok (14)\n");
   exibirLog(f);
 
-  printf("finalizado primeira bateria de testes\n");
-  return 0;
-
   printf("\n\nReduzindo prioridade\n");
 
   if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
@@ -102,8 +99,6 @@ int main() {
   if(reduzirPrioridade(f, 4, 1)) printf("ok\n");
   else printf("nok (19) - esperado, elemento com id=4 nao existe\n");
   exibirLog(f);
-
-
 
   return 0;
 }
