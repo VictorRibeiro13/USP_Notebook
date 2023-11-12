@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ia-knn"
+version = "0.1.0"
+description = ""
+authors = ["Antonio Souza <antonios16020@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ia_knn"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ipykernel = "^6.22.0"
+pandas = "^2.0.0"
+sklearn = "^0.0.post1"
+scikit-learn = "^1.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
